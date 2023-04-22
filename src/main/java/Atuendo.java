@@ -1,4 +1,3 @@
-import java.util.List;
 import java.util.Set;
 
 public class Atuendo {
@@ -8,9 +7,11 @@ public class Atuendo {
   Prenda calzado;
   Set<Prenda> accesorios;
 
-  Atuendo(){};
+  Atuendo(){}
 
-
+  /*
+  Cualquier prenda que este disponible para agregar ya fue validada
+   */
 
 }
 

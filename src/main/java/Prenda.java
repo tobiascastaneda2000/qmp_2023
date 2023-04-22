@@ -4,8 +4,8 @@ import java.util.Optional;
 
 public class Prenda {
 
-  TipoPrenda tipoPrenda;
-   Color colorPrincipal;
+   TipoPrenda tipoPrenda;
+   Color colorPrimario;
    Material material;
    Optional<Color> colorSecundario;
 
@@ -14,37 +14,32 @@ public class Prenda {
     Objects.requireNonNull(colorPrincipal, "Falta colorPrimario");
     Objects.requireNonNull(material, "Falta Material");
     this.tipoPrenda = tipoPrenda;
-    this.colorPrincipal = colorPrincipal;
+    this.colorPrimario = colorPrincipal;
     this.material = material;
     this.colorSecundario = colorSecundario;
   }
-
 
   /*Si los objetos son globales, es mejor evitar los setters*/
 
   //Como usuarie de QuéMePongo, quiero identificar a qué categoría pertenece una prenda (parte superior, calzado, parte inferior, accesorios).
 
   /*Al ser categoria un atributo de tipo, es naturalmente consistente*/
-
   public Categoria identificarCategoria(){
     return this.tipoPrenda.devolverCategoria();
   }
 
 
-
   /*COMENTARIOS
 
   -El usuario instancia una prenda pasando por parametro tipo, material, color primario y opccionalmente color secundario
-  Hay dos constructores, uno con tipo ,material y color Primario, y otro que ademas tiene color secundario
+  Hay un solo constructor que ya realiza validacion de tipo, material y color  primario con un requireNonNull
 
-  -Damos libertad al usuario para cambiar tipo, material y colores de la prenda despues de su creacion, aun que en el
-   mundo real una prenda no puede cambiar de composicion una vez fabricada, en un modelado de objetos cabria esa posibilidad
-   DUDA
+  No damos libertad a usuario de settear prenda, ya que son objetos globales
 
-   -LA clase color ya viene importada desde java en import java.awt.*; es necesario referenciarla en l diagrama?
+   La clase color ya viene importada desde java en import java.awt.*;
 
-  -Decidimos que Categoria fuera un atributo que guarda tipoPreda, ya que ambos parametros estan realcionados por un requerimiento,
-  por lo que garantiza la consistencia de con tipoPrenda, por lo que auna validacion seria innecesaria
+  Decidimos que Categoria fuera un atributo que guarda tipoPreda, ya que ambos parametros estan realcionados por un requerimiento,
+  por lo que garantiza la consistencia de con tipoPrenda, por lo que una validacion seria innecesaria
 
 
 
