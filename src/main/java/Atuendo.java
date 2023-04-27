@@ -8,7 +8,6 @@ public class Atuendo {
   Set<Prenda> accesorios;
 
   Atuendo(){}
-
   /*
   Cualquier prenda que este disponible para agregar ya fue validada
    */

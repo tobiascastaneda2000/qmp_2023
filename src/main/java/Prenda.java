@@ -4,12 +4,13 @@ import java.util.Optional;
 
 public class Prenda {
 
+   Trama trama = Trama.LISA;
    TipoPrenda tipoPrenda;
    Color colorPrimario;
    Material material;
-   Optional<Color> colorSecundario;
+   Color colorSecundario;
 
-  Prenda(TipoPrenda tipoPrenda, Color colorPrincipal, Material material, Optional<Color> colorSecundario){
+  Prenda(TipoPrenda tipoPrenda, Color colorPrincipal, Material material, Color colorSecundario, Trama trama){
     Objects.requireNonNull(tipoPrenda, "Falta tipo");
     Objects.requireNonNull(colorPrincipal, "Falta colorPrimario");
     Objects.requireNonNull(material, "Falta Material");
@@ -17,7 +18,9 @@ public class Prenda {
     this.colorPrimario = colorPrincipal;
     this.material = material;
     this.colorSecundario = colorSecundario;
-  }
+    this.trama = trama;
+  } /*illegalArgumenException*/
+
 
   /*Si los objetos son globales, es mejor evitar los setters*/
 
