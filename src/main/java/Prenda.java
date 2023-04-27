@@ -1,10 +1,9 @@
 import java.awt.*;
 import java.util.Objects;
-import java.util.Optional;
 
 public class Prenda {
 
-   Trama trama = Trama.LISA;
+   Trama trama;
    TipoPrenda tipoPrenda;
    Color colorPrimario;
    Material material;
@@ -28,7 +27,7 @@ public class Prenda {
 
   /*Al ser categoria un atributo de tipo, es naturalmente consistente*/
   public Categoria identificarCategoria(){
-    return this.tipoPrenda.devolverCategoria();
+    return this.tipoPrenda.getCategoria();
   }
 
 

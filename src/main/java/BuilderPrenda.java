@@ -1,16 +1,16 @@
 import java.awt.*;
-import java.util.Optional;
 
 public class BuilderPrenda {
-  Trama trama = Trama.LISA;
   TipoPrenda tipoPrenda;
   Material material;
   Color colorPrimario;
   Color colorSecundario;
+  Trama trama;
 
   /*Como usuarie de QuéMePongo, quiero crear una prenda especificando primero de qué tipo es.*/
   BuilderPrenda(TipoPrenda tipoPrenda){
     this.tipoPrenda = tipoPrenda;
+    this.trama = Trama.LISA;
   }
 
   void agregarMaterial(Material material){
@@ -29,9 +29,10 @@ public class BuilderPrenda {
     this.trama = trama;
   }
 
-  public Prenda guardarPrenda(){
+  public Prenda getResult(){
     return new Prenda(tipoPrenda, colorPrimario, material, colorSecundario, trama);
   }
+
 
 
 
