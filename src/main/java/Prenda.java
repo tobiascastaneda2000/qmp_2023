@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.Objects;
 
 public class Prenda {
 
@@ -10,9 +9,6 @@ public class Prenda {
    Color colorSecundario;
 
   Prenda(TipoPrenda tipoPrenda, Color colorPrincipal, Material material, Color colorSecundario, Trama trama){
-    Objects.requireNonNull(tipoPrenda, "Falta tipo");
-    Objects.requireNonNull(colorPrincipal, "Falta colorPrimario");
-    Objects.requireNonNull(material, "Falta Material");
     this.tipoPrenda = tipoPrenda;
     this.colorPrimario = colorPrincipal;
     this.material = material;
@@ -30,6 +26,17 @@ public class Prenda {
     return this.tipoPrenda.getCategoria();
   }
 
+    public Color getColorPrimario() {
+        return this.colorPrimario;
+    }
+
+    public Color getColorSecundario(){
+      return this.colorSecundario;
+    }
+
+    public Trama getTrama() {
+      return this.trama;
+    }
 
   /*COMENTARIOS
 

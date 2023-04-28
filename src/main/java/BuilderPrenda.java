@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.Objects;
 
 public class BuilderPrenda {
   TipoPrenda tipoPrenda;
@@ -30,6 +31,9 @@ public class BuilderPrenda {
   }
 
   public Prenda getResult(){
+    Objects.requireNonNull(this.tipoPrenda, "Falta tipo");
+    Objects.requireNonNull(this.colorPrimario, "Falta colorPrimario");
+    Objects.requireNonNull(this.material, "Falta Material");
     return new Prenda(tipoPrenda, colorPrimario, material, colorSecundario, trama);
   }
 
