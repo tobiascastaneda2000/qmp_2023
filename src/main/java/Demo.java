@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.util.List;
+import java.util.Optional;
 
 public class Demo {
   public static void main(String[] args) {
@@ -7,48 +9,43 @@ public class Demo {
     BuilderPrenda borrador = new BuilderPrenda(ZapatosCuero);
     borrador.agregarColorPrimario(Color.BLACK);
     borrador.agregarMaterial(Material.CUERO);
-    Prenda prenda = borrador.getResult();
+    Prenda prendaCalzado = borrador.getResult();
 
     TipoPrenda RemeraRayas = new TipoPrenda(Categoria.PARTE_SUPERIOR);
     BuilderPrenda borrador2 = new BuilderPrenda(RemeraRayas);
     borrador2.agregarColorPrimario(Color.BLACK);
     borrador2.agregarMaterial(Material.POLLIESTER);
     borrador2.especificarTrama(Trama.A_CUADROS);
-    Prenda prenda2 = borrador2.getResult();
+    Prenda prendaSuperior = borrador2.getResult();
 
-    System.out.println("\nUna prenda 1 es de categoria:\n" + prenda.identificarCategoria() +
-            "\ncolor primario:\n" + prenda.getColorPrimario() +
-            "\ncolor secundario:\n" + prenda.getColorSecundario());
+    TipoPrenda patalon = new TipoPrenda(Categoria.PARTE_INFERIOR);
+    BuilderPrenda borrador3 = new BuilderPrenda(patalon);
 
-    System.out.println("\nUna prenda 2 es de categoria:\n" + prenda2.identificarCategoria() +
-            "\ncolor primarioa:\n" + prenda2.getColorPrimario() +
-            "\nLa trama es:\n" +  prenda2.getTrama());
+    borrador3.agregarColorPrimario(Color.BLACK);
+    borrador3.agregarMaterial(Material.POLLIESTER);
+    borrador3.especificarTrama(Trama.A_CUADROS);
+    Prenda prendaInferior = borrador3.getResult();
+
+    /*
+    *
+    * */
+    Sugerencias.getInstance().guardar(new Uniforme(prendaSuperior, prendaInferior, prendaCalzado, null));
+
+
+    List<Uniforme> uniformes = Sugerencias.getInstance().recibirSugerencia();
+
+    System.out.println("\nUna prenda 1 es de categoria:\n" + prendaCalzado.identificarCategoria() +
+            "\ncolor primario:\n" + prendaCalzado.getColorPrimario() +
+            "\ncolor secundario:\n" + prendaCalzado.getColorSecundario());
+
+    System.out.println("\nUna prenda 2 es de categoria:\n" + prendaSuperior.identificarCategoria() +
+            "\ncolor primarioa:\n" + prendaSuperior.getColorPrimario() +
+            "\nLa trama es:\n" +  prendaSuperior.getTrama());
+
+    System.out.println("\nSugerencia:\n" + uniformes);
+
 
   }
 
 }
 
-
-//Director director = new Director();
-/*
-    // Director gets the concrete builder object from the client
-    // (application code). That's because application knows better which
-    // builder to use to get a specific product.
-    CarBuilder builder = new CarBuilder();
-    director.constructSportsCar(builder);
-
-    // The final product is often retrieved from a builder object, since
-    // Director is not aware and not dependent on concrete builders and
-    // products.
-    Car car = builder.getResult();
-    System.out.println("Car built:\n" + car.getCarType());
-
-
-    CarManualBuilder manualBuilder = new CarManualBuilder();
-
-    // Director may know several building recipes.
-    director.constructSportsCar(manualBuilder);
-    Manual carManual = manualBuilder.getResult();
-
-
- */

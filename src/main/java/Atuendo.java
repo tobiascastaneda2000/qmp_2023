@@ -12,6 +12,9 @@ public class Atuendo {
     this.calzado = calzado;
     this.accesorios = accesorios;
   }
+
+
+
   /*
   Cualquier prenda que este disponible para agregar ya fue validada
    */
