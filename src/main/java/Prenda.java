@@ -50,6 +50,8 @@ public class Prenda {
   Decidimos que Categoria fuera un atributo que guarda tipoPreda, ya que ambos parametros estan realcionados por un requerimiento,
   por lo que garantiza la consistencia de con tipoPrenda, por lo que una validacion seria innecesaria
 
+  Prenda dificil de validar -> Muchos atributos -> Representacion interna compleja
+
 
 
    */

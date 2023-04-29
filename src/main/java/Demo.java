@@ -1,33 +1,41 @@
 import java.awt.*;
 import java.util.List;
-import java.util.Optional;
 
 public class Demo {
   public static void main(String[] args) {
 
     TipoPrenda ZapatosCuero = new TipoPrenda(Categoria.CALZADO);
-    BuilderPrenda borrador = new BuilderPrenda(ZapatosCuero);
-    borrador.agregarColorPrimario(Color.BLACK);
-    borrador.agregarMaterial(Material.CUERO);
-    Prenda prendaCalzado = borrador.getResult();
+    BorradorPrenda borrador = new BorradorPrenda();
+    borrador.especificarTipo(ZapatosCuero);
+    borrador.especificarColorPrimario(Color.BLACK);
+    borrador.especificarMaterial(Material.CUERO);
+    Prenda prendaCalzado = borrador.construir();
 
     TipoPrenda RemeraRayas = new TipoPrenda(Categoria.PARTE_SUPERIOR);
-    BuilderPrenda borrador2 = new BuilderPrenda(RemeraRayas);
-    borrador2.agregarColorPrimario(Color.BLACK);
-    borrador2.agregarMaterial(Material.POLLIESTER);
+    BorradorPrenda borrador2 = new BorradorPrenda();
+    borrador2.especificarTipo(RemeraRayas);
+    borrador2.especificarColorPrimario(Color.BLACK);
+    borrador2.especificarMaterial(Material.POLLIESTER);
     borrador2.especificarTrama(Trama.A_CUADROS);
-    Prenda prendaSuperior = borrador2.getResult();
+    Prenda prendaSuperior = borrador2.construir();
 
     TipoPrenda patalon = new TipoPrenda(Categoria.PARTE_INFERIOR);
-    BuilderPrenda borrador3 = new BuilderPrenda(patalon);
+    BorradorPrenda borrador3 = new BorradorPrenda();
+    borrador3.especificarTipo(patalon);
 
-    borrador3.agregarColorPrimario(Color.BLACK);
-    borrador3.agregarMaterial(Material.POLLIESTER);
+    borrador3.especificarColorPrimario(Color.BLACK);
+    borrador3.especificarMaterial(Material.POLLIESTER);
     borrador3.especificarTrama(Trama.A_CUADROS);
-    Prenda prendaInferior = borrador3.getResult();
+    Prenda prendaInferior = borrador3.construir();
 
     /*
-    *
+    ok, puedo hacer esto..
+
+    New prenda(...)
+
+    PEro para ello tendria que hacer dos validaciones
+    POr lo que los desarrolladores como equipo, podemos acordar no usar  new prenda.
+    El usuario seguramente va a intentar romper la app
     * */
     Sugerencias.getInstance().guardar(new Uniforme(prendaSuperior, prendaInferior, prendaCalzado, null));
 
