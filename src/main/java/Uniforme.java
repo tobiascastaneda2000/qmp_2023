@@ -1,3 +1,5 @@
+import ar.edu.utn.frba.dds.prenda.Prenda;
+
 import java.util.Objects;
 import java.util.Set;
 
@@ -7,7 +9,7 @@ public class Uniforme {
     Prenda calzado;
     Set<Prenda> accesorios;
 /*
-    Uniforme(Prenda superior, Prenda inferior, Prenda calzado, Set<Prenda> accesorios) {
+    Uniforme(ar.edu.utn.frba.dds.prenda.Prenda superior, ar.edu.utn.frba.dds.prenda.Prenda inferior, ar.edu.utn.frba.dds.prenda.Prenda calzado, Set<ar.edu.utn.frba.dds.prenda.Prenda> accesorios) {
         super(superior, inferior, calzado, accesorios);
     }*/
 

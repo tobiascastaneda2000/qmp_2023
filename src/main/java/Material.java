@@ -1,3 +1,0 @@
-public enum Material {
-  ALGODON , POLLIESTER, CUERO, LANA ,CRYPTONITA, PLASTICO,
-}

@@ -1,30 +1,32 @@
+import ar.edu.utn.frba.dds.prenda.BorradorPrenda;
+import ar.edu.utn.frba.dds.prenda.Categoria;
+import ar.edu.utn.frba.dds.prenda.Prenda;
+import ar.edu.utn.frba.dds.prenda.TipoPrenda;
+import ar.edu.utn.frba.dds.prenda.Trama;
+
 import java.awt.*;
-import java.util.List;
 
 public class Demo {
   public static void main(String[] args) {
 
     TipoPrenda ZapatosCuero = new TipoPrenda(Categoria.CALZADO);
-    BorradorPrenda borrador = new BorradorPrenda();
-    borrador.especificarTipo(ZapatosCuero);
+    BorradorPrenda borrador = new BorradorPrenda(ZapatosCuero);
     borrador.especificarColorPrimario(Color.BLACK);
-    borrador.especificarMaterial(Material.CUERO);
+    borrador.especificarMaterial("CUERO");
     Prenda prendaCalzado = borrador.construir();
 
     TipoPrenda RemeraRayas = new TipoPrenda(Categoria.PARTE_SUPERIOR);
-    BorradorPrenda borrador2 = new BorradorPrenda();
-    borrador2.especificarTipo(RemeraRayas);
+    BorradorPrenda borrador2 = new BorradorPrenda(RemeraRayas);
     borrador2.especificarColorPrimario(Color.BLACK);
-    borrador2.especificarMaterial(Material.POLLIESTER);
+    borrador2.especificarMaterial("POLLIESTER");
     borrador2.especificarTrama(Trama.A_CUADROS);
     Prenda prendaSuperior = borrador2.construir();
 
     TipoPrenda patalon = new TipoPrenda(Categoria.PARTE_INFERIOR);
-    BorradorPrenda borrador3 = new BorradorPrenda();
-    borrador3.especificarTipo(patalon);
+    BorradorPrenda borrador3 = new BorradorPrenda(patalon);
 
     borrador3.especificarColorPrimario(Color.BLACK);
-    borrador3.especificarMaterial(Material.POLLIESTER);
+    borrador3.especificarMaterial("POLLIESTER");
     borrador3.especificarTrama(Trama.A_CUADROS);
     Prenda prendaInferior = borrador3.construir();
 
@@ -37,11 +39,11 @@ public class Demo {
     POr lo que los desarrolladores como equipo, podemos acordar no usar  new prenda.
     El usuario seguramente va a intentar romper la app
     * */
-    Sugerencias.getInstance().guardar(new Uniforme(prendaSuperior, prendaInferior, prendaCalzado, null));
+    //ar.edu.utn.frba.dds.Sugerencias.getInstance().guardar(new Uniforme(prendaSuperior, prendaInferior, prendaCalzado, null));
 
 
-    List<Uniforme> uniformes = Sugerencias.getInstance().recibirSugerencia();
-
+    //List<Uniforme> uniformes = ar.edu.utn.frba.dds.Sugerencias.getInstance().recibirSugerencia();
+/*
     System.out.println("\nUna prenda 1 es de categoria:\n" + prendaCalzado.identificarCategoria() +
             "\ncolor primario:\n" + prendaCalzado.getColorPrimario() +
             "\ncolor secundario:\n" + prendaCalzado.getColorSecundario());
@@ -52,7 +54,7 @@ public class Demo {
 
     System.out.println("\nSugerencia:\n" + uniformes);
 
-
+*/
   }
 
 }

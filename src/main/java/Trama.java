@@ -1,3 +1,0 @@
-public enum Trama {
-  LISA, A_CUADROS,CON_LUNARES, ESPAMPADO
-}

@@ -1,15 +1,19 @@
+package ar.edu.utn.frba.dds.prenda;
+
 import java.awt.*;
-import java.util.Objects;
+
+import static java.util.Objects.requireNonNull;
 
 public class BorradorPrenda {
   TipoPrenda tipoPrenda;
-  Material material;
+  String material;
   Color colorPrimario;
   Color colorSecundario;
   Trama trama;
+  Formalidad formalidad;
 
   /*
-
+  
   COMENTARIOS:
 
   Con una clase Borrador puedo configurar los atributos antes de la creacion de la prenda
@@ -35,28 +39,34 @@ public class BorradorPrenda {
   //Permite diferir en el tiempo la constrccion
 
   /*Tener un objeto mutable que podemos usar*/
-  BorradorPrenda(){
+  public BorradorPrenda(TipoPrenda tipoPrenda) {
     this.trama = Trama.LISA;
+    this.tipoPrenda = requireNonNull(tipoPrenda, "Falta tipo");
+    ;
   }
 
-  void especificarTipo(TipoPrenda tipoPrenda){
+  void especificarTipo(TipoPrenda tipoPrenda) {
     this.tipoPrenda = tipoPrenda;
   }
 
-  void especificarMaterial(Material material){
+  public void especificarMaterial(String material) {
     this.material = material;
   }
 
-  void especificarColorPrimario(Color colorPrimario){
+  public void especificarColorPrimario(Color colorPrimario) {
     this.colorPrimario = colorPrimario;
   }
 
-  void especificarColorSecundario(Color colorSecundario){
+  public void especificarColorSecundario(Color colorSecundario) {
     this.colorSecundario = colorSecundario;
   }
 
-  void especificarTrama(Trama trama){
+  public void especificarTrama(Trama trama) {
     this.trama = trama;
+  }
+
+  public void indicarFormalidad(Formalidad formalidad) {
+    this.formalidad = formalidad;
   }
 
   /*Builder: Como es clase comun y corriente puedo implementar lo que se necesite:
@@ -71,17 +81,19 @@ public class BorradorPrenda {
   -Ayuda en testing
    */
 
-  public Prenda construir(){
-    Objects.requireNonNull(this.tipoPrenda, "Falta tipo");
-    Objects.requireNonNull(this.colorPrimario, "Falta colorPrimario");
-    Objects.requireNonNull(this.material, "Falta Material");
-    return new Prenda(tipoPrenda, colorPrimario, material, colorSecundario, trama);
+  public Prenda construir() {
+
+    requireNonNull(this.colorPrimario, "Falta colorPrimario");
+    requireNonNull(this.material, "Falta Material");
+    if (this.trama == null) {
+      this.trama = Trama.LISA;
+    }
+
+    return new Prenda(tipoPrenda, colorPrimario, material, colorSecundario, trama, formalidad);
   }
   //Aca ya puedo usar prenda
 
   /*NOTA: Herencia se utiliza solo y solo para reutilizar codigo*/
-
-
 
 
 }
