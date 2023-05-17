@@ -7,7 +7,6 @@ import java.util.List;
 
 class Usuario {
 
-
   List<Prenda> prendas = new ArrayList<>();
   int edad;
   MotorSugerencias motorSugerencias;

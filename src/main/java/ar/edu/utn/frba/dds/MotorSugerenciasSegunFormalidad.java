@@ -19,7 +19,7 @@ class MotorSugerenciasSegunFormalidad implements MotorSugerencias {
     //Uso una biblioteca como Guava para el producto cartesiano
     List<List<Prenda>> combinaciones = Lists.cartesianProduct(prendasSuperiores, prendasInferiores, calzados);
 
-    return combinaciones.stream().map(c -> new Sugerencia(c[0], c[1], c[2]));
+    return combinaciones.stream().map(c -> new Sugerencia(c.get(0), c.get(1), c.get(2))).toList();
   }
 
 }
