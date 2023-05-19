@@ -9,11 +9,11 @@ public class Usuario {
 
   List<Prenda> prendas = new ArrayList<>();
   int edad;
-  MotorSugerencias motorSugerencias;
+  ProveedorDeMotor proveedor;
 
-  public Usuario(Integer edad, MotorSugerencias motor) {
+  public Usuario(Integer edad, ProveedorDeMotor proveedorDeMotor) {
     this.edad = edad;
-    this.motorSugerencias = motor;
+    this.proveedor = proveedorDeMotor;
   }
 
   public int getEdad() {
@@ -26,7 +26,7 @@ public class Usuario {
 
   List<Sugerencia> generarSugerencias() {
 
-    return this.motorSugerencias.generarSugerencias(this);
+    return this.proveedor.generarSugerenciasPrendas(this);
   }
 
 

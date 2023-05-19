@@ -8,9 +8,11 @@ import java.util.List;
 public interface MotorSugerencias {
   default List<Sugerencia> generarSugerencias(Usuario usuario){
 
-    List<Prenda> prendasSuperiores = getPrendasValidas(usuario).stream().filter(Prenda::esSuperior).toList();
-    List<Prenda> prendasInferiores = getPrendasValidas(usuario).stream().filter(Prenda::esInferior).toList();
-    List<Prenda> calzados = getPrendasValidas(usuario).stream().filter(Prenda::esCalzado).toList();
+    List<Prenda> prendas = getPrendasValidas(usuario);
+
+    List<Prenda> prendasSuperiores = prendas.stream().filter(Prenda::esSuperior).toList();
+    List<Prenda> prendasInferiores = prendas.stream().filter(Prenda::esInferior).toList();
+    List<Prenda> calzados = prendas.stream().filter(Prenda::esCalzado).toList();
 
     //Uso una biblioteca como Guava para el producto cartesiano
     List<List<Prenda>> combinaciones = Lists.cartesianProduct(prendasSuperiores, prendasInferiores, calzados);
