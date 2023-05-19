@@ -1,17 +1,13 @@
-package ar.edu.utn.frba.dds;
+package ar.edu.utn.frba.dds.sugerencias;
 
 import ar.edu.utn.frba.dds.prenda.Prenda;
 import com.google.common.collect.Lists;
 
 import java.util.List;
 
-class MotorSugerenciasSegunFormalidad implements MotorSugerencias {
+public interface MotorSugerencias {
+  default List<Sugerencia> generarSugerencias(Usuario usuario){
 
-  List<Prenda> getPrendasValidas(Usuario usuario){
-    return usuario.getEdad() > 55 ? usuario.getPrendas().stream().filter(p -> !p.isInformal()).toList() : usuario.getPrendas();
-  }
-
-  public List<Sugerencia> generarSugerencias(Usuario usuario){
     List<Prenda> prendasSuperiores = getPrendasValidas(usuario).stream().filter(Prenda::esSuperior).toList();
     List<Prenda> prendasInferiores = getPrendasValidas(usuario).stream().filter(Prenda::esInferior).toList();
     List<Prenda> calzados = getPrendasValidas(usuario).stream().filter(Prenda::esCalzado).toList();
@@ -22,4 +18,7 @@ class MotorSugerenciasSegunFormalidad implements MotorSugerencias {
     return combinaciones.stream().map(c -> new Sugerencia(c.get(0), c.get(1), c.get(2))).toList();
   }
 
+  List<Prenda> getPrendasValidas(Usuario usuario);
+
 }
+

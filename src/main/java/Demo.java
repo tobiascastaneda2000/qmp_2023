@@ -9,26 +9,6 @@ import java.awt.*;
 public class Demo {
   public static void main(String[] args) {
 
-    TipoPrenda ZapatosCuero = new TipoPrenda(Categoria.CALZADO);
-    BorradorPrenda borrador = new BorradorPrenda(ZapatosCuero);
-    borrador.especificarColorPrimario(Color.BLACK);
-    borrador.especificarMaterial("CUERO");
-    Prenda prendaCalzado = borrador.construir();
-
-    TipoPrenda RemeraRayas = new TipoPrenda(Categoria.PARTE_SUPERIOR);
-    BorradorPrenda borrador2 = new BorradorPrenda(RemeraRayas);
-    borrador2.especificarColorPrimario(Color.BLACK);
-    borrador2.especificarMaterial("POLLIESTER");
-    borrador2.especificarTrama(Trama.A_CUADROS);
-    Prenda prendaSuperior = borrador2.construir();
-
-    TipoPrenda patalon = new TipoPrenda(Categoria.PARTE_INFERIOR);
-    BorradorPrenda borrador3 = new BorradorPrenda(patalon);
-
-    borrador3.especificarColorPrimario(Color.BLACK);
-    borrador3.especificarMaterial("POLLIESTER");
-    borrador3.especificarTrama(Trama.A_CUADROS);
-    Prenda prendaInferior = borrador3.construir();
 
     /*
     ok, puedo hacer esto..
