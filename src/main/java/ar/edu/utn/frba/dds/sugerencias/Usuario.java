@@ -26,7 +26,8 @@ public class Usuario {
 
   List<Sugerencia> generarSugerencias() {
 
-    return this.proveedor.generarSugerenciasPrendas(this);
+    return this.proveedor.generarSugerencia(this);
+
   }
 
 

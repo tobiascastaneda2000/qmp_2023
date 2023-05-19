@@ -62,6 +62,10 @@ public class Prenda {
     return this.categoria() == Categoria.CALZADO;
   }
 
+  public boolean temperaturaCompatible(Integer temperaturaActual){
+    return this.tipoPrenda.getTemperaturaMax() < temperaturaActual;
+  }
+
   /*COMENTARIOS
 
   -El usuario instancia una prenda pasando por parametro tipo, material, color primario y opccionalmente color secundario

@@ -6,9 +6,11 @@ import com.google.common.collect.Lists;
 import java.util.List;
 
 public interface MotorSugerencias {
-  default List<Sugerencia> generarSugerencias(Usuario usuario){
+  default List<Sugerencia> crearSugerencias(Usuario usuario, ProveedorClima proveedorClima){
 
     List<Prenda> prendas = getPrendasValidas(usuario);
+
+    List<Prenda> prendasFiltradas = proveedorClima.filtrarPorClima(prendas);
 
     List<Prenda> prendasSuperiores = prendas.stream().filter(Prenda::esSuperior).toList();
     List<Prenda> prendasInferiores = prendas.stream().filter(Prenda::esInferior).toList();
