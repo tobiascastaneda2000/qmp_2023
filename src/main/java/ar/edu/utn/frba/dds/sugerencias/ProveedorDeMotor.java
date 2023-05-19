@@ -19,9 +19,9 @@ public class ProveedorDeMotor {
     this.motorSugerencias = motorSugerencias;
   }
 
-  public List<Sugerencia> generarSugerencia(Usuario usuario, ProveedorClima proveedorClima){
+  public List<Sugerencia> crearSugerencias(Usuario usuario, ProveedorClima proveedorClima){
 
-    return  this.motorSugerencias.crearSugerencias(usuario, proveedorClima);
+    return  this.motorSugerencias.devolverSugerencias(usuario, proveedorClima);
   }
 
 
