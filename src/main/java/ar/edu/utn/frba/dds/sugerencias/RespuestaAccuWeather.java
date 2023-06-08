@@ -15,11 +15,15 @@ public class RespuestaAccuWeather {
     this.expiracion = expiracion;
   }
 
-  public boolean expiro() {
-    return this.expiracion.isAfter(LocalDateTime.now());
+  // getters
+
+  // si no fuera por este método en algunos lenguajes
+  // bien podría haber sido una tupla
+  public Map<String, Object> getEstadoDelTiempo() {
+    return this.estadoDelTiempo;
   }
 
-  public Map<String, Object> getEstadoDelTiempo() {
-    /*??*/
+  public boolean expiro() {
+    return this.expiracion.isAfter(LocalDateTime.now());
   }
 }

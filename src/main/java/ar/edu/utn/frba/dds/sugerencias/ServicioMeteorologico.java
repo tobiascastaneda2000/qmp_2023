@@ -42,17 +42,4 @@ public class ServicioMeteorologico {
   private Map<String, Object> consultarApi(String direccion) {
     return this.api.getWeather(direccion).get(0);
   }
-
-
-
-
-
-  // getters
-
-  // si no fuera por este método en algunos lenguajes
-  // bien podría haber sido una tupla
-  public
-  boolean expiro() {
-    return this.expiracion.isAfter(DateTime.now);
-  }
 }
