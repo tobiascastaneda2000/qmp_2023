@@ -18,4 +18,8 @@ public class RespuestaAccuWeather {
   public boolean expiro() {
     return this.expiracion.isAfter(LocalDateTime.now());
   }
+
+  public Map<String, Object> getEstadoDelTiempo() {
+    /*??*/
+  }
 }

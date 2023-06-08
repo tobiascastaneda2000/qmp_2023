@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ServicioMetereologico {
+public class ServicioMeteorologico {
   Map<String, RespuestaAccuWeather> ultimasRespuestas;
   AccuWeatherAPI api;
   Duration periodoDeValidez;
@@ -15,10 +15,10 @@ public class ServicioMetereologico {
   // (que es liviano, que no parece ser compartible),
   // pero al usar inyección de dependencias evitamos
   // hacer esas suposiciones: "pateamos el problema para adelante"
-  public ServicioMetereologico(AccuWeatherAPI api, Duration periodoDeValidez) {
+  public ServicioMeteorologico(AccuWeatherAPI api, Duration periodoDeValidez) {
     this.api = api;
     this.periodoDeValidez = periodoDeValidez;
-    this.ultimasRespuestas = new HashMap<String, Object>();
+    this.ultimasRespuestas = new HashMap<String, RespuestaAccuWeather>();
   }
 
   // esto es un algoritmo clásico de caché:
@@ -26,9 +26,9 @@ public class ServicioMetereologico {
   //     * en cualquier caso: devolver el resultado de la caché
   public Map<String, Object> obtenerCondicionesClimaticas(String direccion) {
     if (
-        !this.ultimasRespuestas.contains(direccion)
+        !this.ultimasRespuestas.containsValue(direccion)
             || this.ultimasRespuestas.get(direccion).expiro()) {
-      ultimasRespuestas.put(new RespuestaAccuWeather(this.consultarApi(direccion), proximaExpiracion()));
+      ultimasRespuestas.put(direccion,new RespuestaAccuWeather(this.consultarApi(direccion), proximaExpiracion()));
     }
     return this.ultimasRespuestas.get(direccion).getEstadoDelTiempo();
   }
@@ -42,7 +42,7 @@ public class ServicioMetereologico {
   private Map<String, Object> consultarApi(String direccion) {
     return this.api.getWeather(direccion).get(0);
   }
-}
+
 
 
 
@@ -51,7 +51,8 @@ public class ServicioMetereologico {
 
   // si no fuera por este método en algunos lenguajes
   // bien podría haber sido una tupla
-  public boolean expiro() {
+  public
+  boolean expiro() {
     return this.expiracion.isAfter(DateTime.now);
   }
 }
