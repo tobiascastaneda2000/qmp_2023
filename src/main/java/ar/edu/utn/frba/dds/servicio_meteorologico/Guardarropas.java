@@ -1,7 +1,6 @@
 package ar.edu.utn.frba.dds.servicio_meteorologico;
 
 import ar.edu.utn.frba.dds.prenda.Prenda;
-import ar.edu.utn.frba.dds.servicio_meteorologico.Atuendo;
 import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
@@ -14,17 +13,17 @@ public class Guardarropas {
 
   public List<Atuendo> todasLasPosiblesCombinaciones() {
 
-      List<Atuendo> combinaciones = new ArrayList<>();
+    List<Atuendo> combinaciones = new ArrayList<>();
 
-      List<List<Prenda>> todasLasCombinaciones = Lists.cartesianProduct(prendasSuperiores, prendasInferiores, calzados);
-      for (List<Prenda> combinacion : todasLasCombinaciones) {
-        Atuendo atuendo = new Atuendo(combinacion.get(0), combinacion.get(1), combinacion.get(2));
-        combinaciones.add(atuendo);
-      }
-
-      return combinaciones;
+    List<List<Prenda>> todasLasCombinaciones = Lists.cartesianProduct(prendasSuperiores, prendasInferiores, calzados);
+    for (List<Prenda> combinacion : todasLasCombinaciones) {
+      Atuendo atuendo = new Atuendo(combinacion.get(0), combinacion.get(1), combinacion.get(2));
+      combinaciones.add(atuendo);
     }
+
+    return combinaciones;
   }
+}
 
 
 

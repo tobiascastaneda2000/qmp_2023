@@ -62,7 +62,7 @@ public class Prenda {
     return this.categoria() == Categoria.CALZADO;
   }
 
-  public boolean esAptaParaTemperatura(Integer temperaturaActual){
+  public boolean esAptaParaTemperatura(Integer temperaturaActual) {
     return this.tipoPrenda.getTemperaturaMax() <= temperaturaActual;
   }
 

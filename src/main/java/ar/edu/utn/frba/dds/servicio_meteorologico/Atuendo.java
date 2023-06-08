@@ -11,13 +11,8 @@ public class Atuendo {
   }
 
   Prenda prendaSuperior;
-
-
   Prenda prendaInferior;
-
-
   Prenda calzado;
-
 
   public void setPrendaSuperior(Prenda prendaSuperior) {
     this.prendaSuperior = prendaSuperior;

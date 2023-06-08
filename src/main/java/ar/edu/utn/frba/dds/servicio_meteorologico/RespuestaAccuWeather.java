@@ -1,7 +1,5 @@
 package ar.edu.utn.frba.dds.servicio_meteorologico;
 
-import ar.edu.utn.frba.dds.servicio_meteorologico.EstadoDelTiempo;
-
 import java.time.LocalDateTime;
 
 // Esto es necesario solamente para "agregarle" a las condiciones
@@ -10,6 +8,7 @@ public class RespuestaAccuWeather {
 
   EstadoDelTiempo estadoDelTiempo;
   LocalDateTime expiracion;
+
   public RespuestaAccuWeather(EstadoDelTiempo estadoDelTiempo, LocalDateTime expiracion) {
     this.estadoDelTiempo = estadoDelTiempo;
     this.expiracion = expiracion;

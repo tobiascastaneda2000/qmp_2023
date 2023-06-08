@@ -13,20 +13,20 @@ public class AsesorDeImagen {
 
   public Atuendo sugerirAtuendo(String direccion, Guardarropas guardarropas) {
 
-        EstadoDelTiempo estadoDelTiempo = this.servicioMeteorologico.obtenerCondicionesClimaticas(direccion);
-        List<Atuendo> combinaciones = guardarropas.todasLasPosiblesCombinaciones();
-        return combinaciones
-            .stream()
-            .filter(combinacion -> combinacion.aptaParaTemperatura(estadoDelTiempo.getTemperatura()))
+    EstadoDelTiempo estadoDelTiempo = this.servicioMeteorologico.obtenerCondicionesClimaticas(direccion);
+    List<Atuendo> combinaciones = guardarropas.todasLasPosiblesCombinaciones();
+    return combinaciones
+        .stream()
+        .filter(combinacion -> combinacion.aptaParaTemperatura(estadoDelTiempo.getTemperatura()))
 
-            .findFirst()
-            .get();
+        .findFirst()
+        .get();
 
-        //.filter(combinacion -> combinacion.aptaParaHumedad(estadoDelTiempo.getHumedad()))
+    //.filter(combinacion -> combinacion.aptaParaHumedad(estadoDelTiempo.getHumedad()))
 
 
-    }
   }
+}
 
 
 

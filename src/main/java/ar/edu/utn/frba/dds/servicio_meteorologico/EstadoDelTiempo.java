@@ -4,7 +4,6 @@ public class EstadoDelTiempo {
 
   int temperatura;
 
-
   double humedad;
 
   public EstadoDelTiempo(int temperatura
@@ -20,7 +19,7 @@ public class EstadoDelTiempo {
 
 }
 
-  //public double getHumedad() {return humedad;}
+//public double getHumedad() {return humedad;}
 
 
 
