@@ -5,7 +5,7 @@ import java.util.List;
 public class ProveedorDeMotor {
 
   MotorSugerencias motorSugerencias;
-  ProveedorClima proveedorClima;
+  AsesorDeImagen asesorDeImagen;
 
   public ProveedorDeMotor(MotorSugerencias motorSugerencias) {
     this.motorSugerencias = motorSugerencias;
@@ -19,9 +19,9 @@ public class ProveedorDeMotor {
     this.motorSugerencias = motorSugerencias;
   }
 
-  public List<Sugerencia> crearSugerencias(Usuario usuario, ProveedorClima proveedorClima){
+  public List<Sugerencia> crearSugerencias(Usuario usuario, AsesorDeImagen asesorDeImagen){
 
-    return  this.motorSugerencias.devolverSugerencias(usuario, proveedorClima);
+    return  this.motorSugerencias.devolverSugerencias(usuario, asesorDeImagen);
   }
 
 

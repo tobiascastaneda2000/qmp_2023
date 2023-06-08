@@ -10,7 +10,7 @@ public class Usuario {
   List<Prenda> prendas = new ArrayList<>();
   int edad;
   ProveedorDeMotor proveedor;
-  ProveedorClima proveedorClima;
+  AsesorDeImagen asesorDeImagen;
 
   public Usuario(Integer edad, ProveedorDeMotor proveedorDeMotor) {
     this.edad = edad;
@@ -27,7 +27,7 @@ public class Usuario {
 
   List<Sugerencia> generarSugerencias() {
 
-    return this.proveedor.crearSugerencias(this, proveedorClima );
+    return this.proveedor.crearSugerencias(this, asesorDeImagen);
 
   }
 

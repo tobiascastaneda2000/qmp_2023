@@ -18,7 +18,7 @@ public class ConstruirPrendaTest {
 
   @BeforeEach
   void init(){
-    tipoPrenda = new TipoPrenda(Categoria.PARTE_SUPERIOR);
+    tipoPrenda = new TipoPrenda(Categoria.PARTE_SUPERIOR,20);
   }
 
   @Test
