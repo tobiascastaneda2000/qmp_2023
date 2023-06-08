@@ -6,18 +6,30 @@ import java.util.List;
 import java.util.Map;
 
 public class ProveedorClima {
-  String ciudad;
+  private final ServicioMeteorologico servicioMeteorologico;
 
-  public int temperaturaActual(String ciudad) {
-
-    AccuWeatherAPI apiClima = new AccuWeatherAPI();
-    List<Map<String, Object>> condicionesClimaticas = apiClima.getWeather(ciudad);
-    Object temperature = condicionesClimaticas.get(0).get("Temperature");
-    return temperature.get(0).get("Value");
+  public ProveedorClima(ServicioMeteorologico servicioMeteorologico) {
+    this.servicioMeteorologico = servicioMeteorologico;
   }
 
-  public List<Prenda> filtrarPorClima(List<Prenda> prendas) {
-    int temperaturaActual = this.temperaturaActual("Buenos Aires");
-    return prendas.stream().filter(prenda -> prenda.compararTemperatura(temperaturaActual)).toList();
+  // .... constructor que inyecta al servicio meteorologico....
+
+  public Atuendo sugerirAtuendo(String direccion, Guardarropas guardarrpas) {
+    Map<String, Object> estadoDelTiempo = this.servicioMeteorologico
+        .obtenerCondicionesClimaticas(direccion);
+
+    int temperatura = (int) estadoDelTiempo.get(¿¿??);
+    /*
+    Humedad humedad = (double) prediccion.get(¿¿???) > 0.8 ? LLUVIOSO : SECO;
+    // El enunciado no lo pide, pero a modo de ejemplo
+    // de cómo fácilmente se podría complicar más
+*/
+    List<Atuendo> combinaciones = guardarropas.todasLasPosiblesCombinaciones();
+
+    return combinaciones
+        .filter( combinacion -> combinacion.aptaParaTemperatura(temperatura) )
+        .filter( combinacion -> combinacion.aptaParaHumedad(humedad) )
+        .first();
   }
-}
+
+
