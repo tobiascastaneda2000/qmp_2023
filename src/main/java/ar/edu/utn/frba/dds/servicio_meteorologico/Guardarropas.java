@@ -1,6 +1,7 @@
-package ar.edu.utn.frba.dds.sugerencias;
+package ar.edu.utn.frba.dds.servicio_meteorologico;
 
 import ar.edu.utn.frba.dds.prenda.Prenda;
+import ar.edu.utn.frba.dds.servicio_meteorologico.Atuendo;
 import com.google.common.collect.Lists;
 
 import java.util.ArrayList;

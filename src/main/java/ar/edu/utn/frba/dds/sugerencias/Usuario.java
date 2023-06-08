@@ -1,6 +1,7 @@
 package ar.edu.utn.frba.dds.sugerencias;
 
 import ar.edu.utn.frba.dds.prenda.Prenda;
+import ar.edu.utn.frba.dds.servicio_meteorologico.AsesorDeImagen;
 
 import java.util.ArrayList;
 import java.util.List;

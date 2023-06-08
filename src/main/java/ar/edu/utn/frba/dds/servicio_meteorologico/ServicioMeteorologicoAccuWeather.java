@@ -1,4 +1,9 @@
-package ar.edu.utn.frba.dds.sugerencias;
+package ar.edu.utn.frba.dds.servicio_meteorologico;
+
+import ar.edu.utn.frba.dds.servicio_meteorologico.AccuWeatherAPI;
+import ar.edu.utn.frba.dds.servicio_meteorologico.EstadoDelTiempo;
+import ar.edu.utn.frba.dds.servicio_meteorologico.RespuestaAccuWeather;
+import ar.edu.utn.frba.dds.servicio_meteorologico.ServicioMeteorologico;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

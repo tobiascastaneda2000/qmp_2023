@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.dds.sugerencias;
+package ar.edu.utn.frba.dds.servicio_meteorologico;
 
 public class EstadoDelTiempo {
 

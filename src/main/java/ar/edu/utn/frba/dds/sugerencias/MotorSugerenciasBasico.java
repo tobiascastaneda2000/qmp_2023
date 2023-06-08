@@ -9,7 +9,7 @@ Dependencias: Alguas mas faciles (prenda) y otras mas dificiles (motorSugerencia
 -Antes de crear mi clase, esa dependencia ya existia?
 -Clase usuario va a depender de motor
 Entonces va a requerir una inyecccion de dependencias, por el constructor
-ar.edu.utn.frba.dds.sugerencias.AccuWeatherAPI.Usuario va a depender de lo que venga de afuera
+ar.edu.utn.frba.dds.servicio_meteorologico.AccuWeatherAPI.Usuario va a depender de lo que venga de afuera
 dependencia no significa necesariamente que la tengamos que instanciar
 Service Locator -> SIngleton mas grande y configurable (mejor)
 Desacoplar la logica de como adopto esa dependencia

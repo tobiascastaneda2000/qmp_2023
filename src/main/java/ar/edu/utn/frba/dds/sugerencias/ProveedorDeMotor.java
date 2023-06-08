@@ -1,5 +1,7 @@
 package ar.edu.utn.frba.dds.sugerencias;
 
+import ar.edu.utn.frba.dds.servicio_meteorologico.AsesorDeImagen;
+
 import java.util.List;
 
 public class ProveedorDeMotor {

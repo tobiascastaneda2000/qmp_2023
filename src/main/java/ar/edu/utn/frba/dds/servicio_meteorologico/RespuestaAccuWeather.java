@@ -1,4 +1,6 @@
-package ar.edu.utn.frba.dds.sugerencias;
+package ar.edu.utn.frba.dds.servicio_meteorologico;
+
+import ar.edu.utn.frba.dds.servicio_meteorologico.EstadoDelTiempo;
 
 import java.time.LocalDateTime;
 
