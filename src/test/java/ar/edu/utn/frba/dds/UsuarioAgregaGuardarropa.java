@@ -1,6 +1,7 @@
 package ar.edu.utn.frba.dds;
 
 import ar.edu.utn.frba.dds.propuestas.UsuarioGuardarropas;
+import ar.edu.utn.frba.dds.propuestas.YaTieneGuardarropasException;
 import ar.edu.utn.frba.dds.servicio_meteorologico.Guardarropas;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,6 +32,18 @@ public class UsuarioAgregaGuardarropa {
   }
 
   @Test
+  void usuarioNoPuedeAgregarGuardarropas() {
+    usuarioCreador.agregarGuardarropa(guardarropas);
+    Assertions.assertThrows( YaTieneGuardarropasException.class,()->{usuarioCreador.agregarGuardarropa(guardarropas);});
+  }
+/*
+  @Test
+  void usuarioNoPuedeAgregarGuardarropas() {
+    usuarioCreador.agregarGuardarropa(guardarropas);
+    Assertions.assertThrows( YaTieneGuardarropasException.class,()->{usuarioCreador.agregarGuardarropa(guardarropas);});
+  }*/
+
+  @Test
   void usuarioAgregaGuardarropasCompartido(){
     Set<UsuarioGuardarropas> listaUsuario = new HashSet<>();
     listaUsuario.add(unUsuario);
@@ -44,6 +57,6 @@ public class UsuarioAgregaGuardarropa {
   }
 
   /*Casos de prueba:
-  * 1) usuario ya tiene guardarropas no debe agregarla
-  * (o lanzar excepccion o simplemente no agregarla)*/
+  -Cuando se agrega guardarropas compartido y  usuario ya tiene guardarropas
+  */
 }

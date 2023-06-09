@@ -40,11 +40,21 @@ public class UsuarioGuardarropas {
   }
 
   public void agregarGuardarropaCompartido(Guardarropas guardarropa, Set<UsuarioGuardarropas> usuarios) {
+
     this.agregarGuardarropa(guardarropa);
     usuarios.forEach(u -> u.agregarGuardarropa(guardarropa));
+
   }
 
+  private void validarSiYaTieneGuardarropas(Guardarropas guardarropas) {
+    if(getGuardarropas().contains(guardarropas)){
+      throw new YaTieneGuardarropasException("El usuario " + this + " ya tiene este guardarropas ");
+    }
+  }
+
+
   public void agregarGuardarropa(Guardarropas guardarropa) {
+    validarSiYaTieneGuardarropas(guardarropa);
     guardarropas.add(guardarropa);
   }
 }
