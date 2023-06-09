@@ -5,6 +5,8 @@ import ar.edu.utn.frba.dds.propuestas.YaTieneGuardarropasException;
 import ar.edu.utn.frba.dds.servicio_meteorologico.Guardarropas;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
@@ -25,6 +27,7 @@ public class UsuarioAgregaGuardarropa {
   }
 
   @Test
+  @DisplayName("usuario puede agregar guardarropas")
   void usuarioAgregaGuardarropas() {
     usuarioCreador.agregarGuardarropa(guardarropas);
     Assertions.assertTrue(usuarioCreador.getGuardarropas().contains(guardarropas));
@@ -32,18 +35,21 @@ public class UsuarioAgregaGuardarropa {
   }
 
   @Test
+  @DisplayName("usuario no puede agregar guardarropa que ya tiene")
   void usuarioNoPuedeAgregarGuardarropas() {
     usuarioCreador.agregarGuardarropa(guardarropas);
     Assertions.assertThrows( YaTieneGuardarropasException.class,()->{usuarioCreador.agregarGuardarropa(guardarropas);});
   }
-/*
-  @Test
-  void usuarioNoPuedeAgregarGuardarropas() {
-    usuarioCreador.agregarGuardarropa(guardarropas);
-    Assertions.assertThrows( YaTieneGuardarropasException.class,()->{usuarioCreador.agregarGuardarropa(guardarropas);});
-  }*/
 
   @Test
+  @Disabled
+  @DisplayName("usuario no puede agregar guardarropas compartido que uno sesus usuarios ya tiene")
+  void usuarioNoPuedeAgregarGuardarropasCompartido() {
+
+  }
+
+  @Test
+  @DisplayName("usuario agrega guardarropas compartido")
   void usuarioAgregaGuardarropasCompartido(){
     Set<UsuarioGuardarropas> listaUsuario = new HashSet<>();
     listaUsuario.add(unUsuario);
