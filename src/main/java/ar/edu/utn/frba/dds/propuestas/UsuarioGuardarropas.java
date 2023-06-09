@@ -9,6 +9,10 @@ import java.util.List;
 import java.util.Set;
 
 public class UsuarioGuardarropas {
+  public List<Propuesta> getPropuestas() {
+    return propuestas;
+  }
+
   List<Propuesta> propuestas;
 
   public Set<Guardarropas> getGuardarropas() {
