@@ -31,14 +31,16 @@ public class UsuarioAgregaGuardarropa {
   void usuarioAgregaGuardarropas() {
     usuarioCreador.agregarGuardarropa(guardarropas);
     Assertions.assertTrue(usuarioCreador.getGuardarropas().contains(guardarropas));
-    Assertions.assertEquals(usuarioCreador.getGuardarropas().size(),1);
+    Assertions.assertEquals(usuarioCreador.getGuardarropas().size(), 1);
   }
 
   @Test
   @DisplayName("usuario no puede agregar guardarropa que ya tiene")
   void usuarioNoPuedeAgregarGuardarropas() {
     usuarioCreador.agregarGuardarropa(guardarropas);
-    Assertions.assertThrows( YaTieneGuardarropasException.class,()->{usuarioCreador.agregarGuardarropa(guardarropas);});
+    Assertions.assertThrows(YaTieneGuardarropasException.class, () -> {
+      usuarioCreador.agregarGuardarropa(guardarropas);
+    });
   }
 
   @Test
@@ -50,11 +52,11 @@ public class UsuarioAgregaGuardarropa {
 
   @Test
   @DisplayName("usuario agrega guardarropas compartido")
-  void usuarioAgregaGuardarropasCompartido(){
+  void usuarioAgregaGuardarropasCompartido() {
     Set<UsuarioGuardarropas> listaUsuario = new HashSet<>();
     listaUsuario.add(unUsuario);
     listaUsuario.add(otroUsuario);
-    usuarioCreador.agregarGuardarropaCompartido(guardarropas, listaUsuario );
+    usuarioCreador.agregarGuardarropaCompartido(guardarropas, listaUsuario);
     Assertions.assertTrue(usuarioCreador.getGuardarropas().contains(guardarropas));
     Assertions.assertTrue(unUsuario.getGuardarropas().contains(guardarropas));
     Assertions.assertTrue(otroUsuario.getGuardarropas().contains(guardarropas));

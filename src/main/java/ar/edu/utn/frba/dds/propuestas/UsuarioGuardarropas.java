@@ -13,6 +13,10 @@ public class UsuarioGuardarropas {
     return propuestas;
   }
 
+  public void setPropuestas(List<Propuesta> propuestas) {
+    this.propuestas = propuestas;
+  }
+
   List<Propuesta> propuestas;
 
   public Set<Guardarropas> getGuardarropas() {
@@ -27,20 +31,32 @@ public class UsuarioGuardarropas {
   }
 
   public void recibirPropuestaAgregar(Guardarropas guardarropas, Prenda prenda) {
+    guardarropas.validarPrendaParaAgregar(prenda);
     propuestas.add(new PropuestaAgregar(guardarropas, prenda));
   }
 
   public void recibirPropuestaQuitar(Guardarropas guardarropas, Prenda prenda) {
+    guardarropas.validarPrendaParaQuitar(prenda);
     propuestas.add(new PropuestaQuitar(guardarropas, prenda));
   }
 
   public void aceptarPropuesta(Propuesta propuesta) {
-    propuesta.aplicarPropuesta();
-    propuestas.remove(propuesta);
+    if(!getPropuestas().contains(propuesta)){
+      throw new NoExistePropuestaException("No existe la propuesta");
+    }
+    else {
+      propuesta.aplicarPropuesta();
+      propuestas.remove(propuesta);
+    }
+
   }
 
   public void rechazarPropuesta(Propuesta propuesta) {
-    propuestas.remove(propuesta);
+    if(!getPropuestas().contains(propuesta)){
+      throw new NoExistePropuestaException("No existe la propuesta");
+    }
+    else {propuestas.remove(propuesta);}
+
   }
 
   public void agregarGuardarropaCompartido(Guardarropas guardarropa, Set<UsuarioGuardarropas> usuarios) {

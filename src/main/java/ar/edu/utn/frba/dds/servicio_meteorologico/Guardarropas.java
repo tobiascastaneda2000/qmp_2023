@@ -3,18 +3,26 @@ package ar.edu.utn.frba.dds.servicio_meteorologico;
 import ar.edu.utn.frba.dds.prenda.Prenda;
 import com.google.common.collect.Lists;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Guardarropas {
-  /*
-  List<Prenda> prendasSuperiores;
-  List<Prenda> prendasInferiores;
-  List<Prenda> calzados;
 
-   */
+
+  /*
+    List<Prenda> prendasSuperiores;
+    List<Prenda> prendasInferiores;
+    List<Prenda> calzados;
+
+     */
   List<Prenda> prendas;
 
   public Guardarropas() {
+    this.prendas = new ArrayList<>();
+  }
+
+  public List<Prenda> getPrendas() {
+    return prendas;
   }
 /*
   public List<Atuendo> todasLasPosiblesCombinaciones() {
@@ -50,6 +58,18 @@ public class Guardarropas {
 
   public void quitarPrenda(Prenda prenda){
     prendas.remove(prenda);
+  }
+
+  public void validarPrendaParaAgregar(Prenda prenda) {
+    if(getPrendas().contains(prenda)){
+      throw new PrendaYaExisteEnGuardaropasException("Prenda ya existe dentro del guardarropas correspondiente");
+    }
+  }
+
+  public void validarPrendaParaQuitar(Prenda prenda) {
+    if(!getPrendas().contains(prenda)){
+      throw new PrendaNoExisteEnGuardaropasException("Prenda NO existe dentro del guardarropas correspondiente");
+    }
   }
 
 
