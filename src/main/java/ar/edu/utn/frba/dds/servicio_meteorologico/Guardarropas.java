@@ -11,6 +11,9 @@ public class Guardarropas {
   List<Prenda> prendasInferiores;
   List<Prenda> calzados;
 
+  public Guardarropas() {
+  }
+
   public List<Atuendo> todasLasPosiblesCombinaciones() {
 
     List<Atuendo> combinaciones = new ArrayList<>();
