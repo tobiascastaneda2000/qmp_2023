@@ -30,8 +30,6 @@ public class UsuarioGeneraPropuesta {
   void usuarioAgregaPropuesta(){
     unUsuario.recibirPropuestaAgregar(guardarropas, prendaMock);
     Assertions.assertEquals(unUsuario.getPropuestas().size(), 1);
-
-
   }
 
   @Test

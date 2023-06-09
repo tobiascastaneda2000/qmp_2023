@@ -6,9 +6,21 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class UsuarioGuardarropas {
+
+  List<Propuesta> propuestas;
+  Set<Guardarropas> guardarropas;
+
+  public UsuarioGuardarropas() {
+    this.propuestas = new ArrayList<>();
+    this.guardarropas = new HashSet<>();
+  }
+
+  //GETTERS Y SETTERS
+
   public List<Propuesta> getPropuestas() {
     return propuestas;
   }
@@ -17,22 +29,17 @@ public class UsuarioGuardarropas {
     this.propuestas = propuestas;
   }
 
-  List<Propuesta> propuestas;
-
   public Set<Guardarropas> getGuardarropas() {
     return guardarropas;
   }
 
-  Set<Guardarropas> guardarropas;
+  //METODOS
 
-  public UsuarioGuardarropas() {
-    this.propuestas = new ArrayList<>();
-    this.guardarropas = new HashSet<>();
+  public List<Prenda> getPrendas() {
+    return this.guardarropas.stream()
+        .flatMap(guardarropas -> guardarropas.getPrendas().stream())
+        .collect(Collectors.toList());
   }
-/*
-  public List<Prenda> getPrendas(){
-    return this.guardarropas.stream().flatMap(guardarropas -> guardarropas.getPrendas());
-  }*/
 
   public void recibirPropuestaAgregar(Guardarropas guardarropas, Prenda prenda) {
     guardarropas.validarPrendaParaAgregar(prenda);
@@ -62,7 +69,6 @@ public class UsuarioGuardarropas {
     else {propuestas.remove(propuesta);}
 
   }
-
 
   public void agregarGuardarropa(Guardarropas guardarropa) {
     guardarropas.add(guardarropa);

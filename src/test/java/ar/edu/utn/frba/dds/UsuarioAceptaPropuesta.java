@@ -46,7 +46,7 @@ public class UsuarioAceptaPropuesta {
   void usuarioAceptaPropuestaDeAgregado() {
     Assertions.assertTrue(unUsuario.getPropuestas().contains(propuestaAgregar));
     unUsuario.aceptarPropuesta(propuestaAgregar);
-    Assertions.assertTrue(guardarropas.getPrendas().contains(prendaMock));
+    Assertions.assertTrue(unUsuario.getPrendas().contains(prendaMock));
     Assertions.assertFalse(unUsuario.getPropuestas().contains(propuestaAgregar));
     //Mockito.verify(guardarropas, Mockito.times(1)).agregarPrenda(prendaMock);
     //metodo para verificar que guardarPrenda(prendaMock ) se llama una vez
@@ -59,7 +59,7 @@ public class UsuarioAceptaPropuesta {
     Assertions.assertTrue(unUsuario.getPropuestas().contains(propuestaQuitar));
     guardarropas.agregarPrenda(prendaMock);
     unUsuario.aceptarPropuesta(propuestaQuitar);
-    Assertions.assertFalse(guardarropas.getPrendas().contains(prendaMock));
+    Assertions.assertFalse(unUsuario.getPrendas().contains(prendaMock));
     Assertions.assertFalse(unUsuario.getPropuestas().contains(propuestaQuitar));
     //Mockito.verify(guardarropas, Mockito.times(1)).agregarPrenda(prendaMock);
     //metodo para verificar que guardarPrenda(prendaMock ) se llama una vez
