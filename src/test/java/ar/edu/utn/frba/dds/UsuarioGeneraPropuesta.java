@@ -1,17 +1,13 @@
 package ar.edu.utn.frba.dds;
 
 import ar.edu.utn.frba.dds.prenda.Prenda;
-import ar.edu.utn.frba.dds.propuestas.Propuesta;
-import ar.edu.utn.frba.dds.propuestas.PropuestaAgregar;
 import ar.edu.utn.frba.dds.propuestas.UsuarioGuardarropas;
-import ar.edu.utn.frba.dds.servicio_meteorologico.Guardarropas;
+import ar.edu.utn.frba.dds.propuestas.Guardarropas;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.util.Arrays;
 
 import static org.mockito.Mockito.mock;
 

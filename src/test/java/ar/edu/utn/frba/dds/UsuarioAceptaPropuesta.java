@@ -5,7 +5,7 @@ import ar.edu.utn.frba.dds.propuestas.Propuesta;
 import ar.edu.utn.frba.dds.propuestas.PropuestaAgregar;
 import ar.edu.utn.frba.dds.propuestas.PropuestaQuitar;
 import ar.edu.utn.frba.dds.propuestas.UsuarioGuardarropas;
-import ar.edu.utn.frba.dds.servicio_meteorologico.Guardarropas;
+import ar.edu.utn.frba.dds.propuestas.Guardarropas;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,15 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class UsuarioAceptaPropuesta {
 

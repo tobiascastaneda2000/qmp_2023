@@ -1,6 +1,9 @@
-package ar.edu.utn.frba.dds.servicio_meteorologico;
+package ar.edu.utn.frba.dds.propuestas;
 
 import ar.edu.utn.frba.dds.prenda.Prenda;
+import ar.edu.utn.frba.dds.servicio_meteorologico.Atuendo;
+import ar.edu.utn.frba.dds.servicio_meteorologico.PrendaNoExisteEnGuardaropasException;
+import ar.edu.utn.frba.dds.servicio_meteorologico.PrendaYaExisteEnGuardaropasException;
 import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
@@ -8,13 +11,6 @@ import java.util.List;
 
 public class Guardarropas {
 
-
-  /*
-    List<Prenda> prendasSuperiores;
-    List<Prenda> prendasInferiores;
-    List<Prenda> calzados;
-
-     */
   List<Prenda> prendas;
 
   public Guardarropas() {
@@ -22,7 +18,7 @@ public class Guardarropas {
   }
 
   public List<Prenda> getPrendas() {
-    return prendas;
+    return this.prendas;
   }
 /*
   public List<Atuendo> todasLasPosiblesCombinaciones() {

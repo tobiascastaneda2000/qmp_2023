@@ -1,5 +1,7 @@
 package ar.edu.utn.frba.dds.servicio_meteorologico;
 
+import ar.edu.utn.frba.dds.propuestas.Guardarropas;
+
 import java.util.List;
 
 public class AsesorDeImagen {

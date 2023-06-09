@@ -1,12 +1,12 @@
 package ar.edu.utn.frba.dds.propuestas;
 
 import ar.edu.utn.frba.dds.prenda.Prenda;
-import ar.edu.utn.frba.dds.servicio_meteorologico.Guardarropas;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class UsuarioGuardarropas {
   public List<Propuesta> getPropuestas() {
@@ -29,6 +29,10 @@ public class UsuarioGuardarropas {
     this.propuestas = new ArrayList<>();
     this.guardarropas = new HashSet<>();
   }
+/*
+  public List<Prenda> getPrendas(){
+    return this.guardarropas.stream().flatMap(guardarropas -> guardarropas.getPrendas());
+  }*/
 
   public void recibirPropuestaAgregar(Guardarropas guardarropas, Prenda prenda) {
     guardarropas.validarPrendaParaAgregar(prenda);
@@ -59,22 +63,8 @@ public class UsuarioGuardarropas {
 
   }
 
-  public void agregarGuardarropaCompartido(Guardarropas guardarropa, Set<UsuarioGuardarropas> usuarios) {
-
-    this.agregarGuardarropa(guardarropa);
-    usuarios.forEach(u -> u.agregarGuardarropa(guardarropa));
-
-  }
-
-  private void validarSiYaTieneGuardarropas(Guardarropas guardarropas) {
-    if(getGuardarropas().contains(guardarropas)){
-      throw new YaTieneGuardarropasException("El usuario " + this + " ya tiene este guardarropas ");
-    }
-  }
-
 
   public void agregarGuardarropa(Guardarropas guardarropa) {
-    validarSiYaTieneGuardarropas(guardarropa);
     guardarropas.add(guardarropa);
   }
 }
