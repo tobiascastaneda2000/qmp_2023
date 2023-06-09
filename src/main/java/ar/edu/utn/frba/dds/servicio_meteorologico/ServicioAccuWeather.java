@@ -34,14 +34,6 @@ public class ServicioAccuWeather implements ServicioMeteorologico {
   }
 
   private EstadoDelTiempo consultarApi(String direccion) {
-      /*
-      var weather = this.api.getWeather(direccion);
-      return new RespuestaAccuWeather(
-          new EstadoDelTiempo(
-              (int) weather.get("Temperature"),
-              (double) weather.get("Humidity") > 0.8 ? Humedad.ALTA : Humedad.BAJA),
-          this.proximaExpiracion());
-    }*/
 
     // Encapsulamos el problema
     // ¿Podríamos haber usado algún patron creacional?

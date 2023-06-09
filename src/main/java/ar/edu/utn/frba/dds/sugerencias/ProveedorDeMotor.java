@@ -21,12 +21,10 @@ public class ProveedorDeMotor {
     this.motorSugerencias = motorSugerencias;
   }
 
-  public List<Sugerencia> crearSugerencias(Usuario usuario, AsesorDeImagen asesorDeImagen){
+  public List<Sugerencia> crearSugerencias(Usuario usuario, AsesorDeImagen asesorDeImagen) {
 
-    return  this.motorSugerencias.devolverSugerencias(usuario, asesorDeImagen);
+    return this.motorSugerencias.devolverSugerencias(usuario, asesorDeImagen);
   }
-
-
 
 
 }

@@ -6,7 +6,7 @@ import com.google.common.collect.Lists;
 
 import java.util.List;
 
-public interface MotorSugerencias {
+public interface  MotorSugerencias {
   default List<Sugerencia> devolverSugerencias(Usuario usuario, AsesorDeImagen asesorDeImagen){
 
     List<Prenda> prendas = getPrendasValidas(usuario);

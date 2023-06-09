@@ -23,6 +23,30 @@ public class Guardarropas {
 
     return combinaciones;
   }
+
+  public void agregarPrenda(Prenda prenda) {
+    switch (prenda.categoria()) {
+      case PARTE_SUPERIOR -> {
+        prendasSuperiores.add(prenda);
+      }
+      case PARTE_INFERIOR -> prendasInferiores.add(prenda);
+      case CALZADO -> calzados.add(prenda);
+      default -> throw new RuntimeException("Categoria no pertenece a los campos del guardarropas");
+
+    }
+  }
+
+  public void quitarPrenda(Prenda prenda) {
+    switch (prenda.categoria()) {
+      case PARTE_SUPERIOR -> {
+        prendasSuperiores.remove(prenda);
+      }
+      case PARTE_INFERIOR -> prendasInferiores.remove(prenda);
+      case CALZADO -> calzados.remove(prenda);
+      default -> throw new RuntimeException("Categoria no pertenece a los campos del guardarropas");
+
+    }
+  }
 }
 
 

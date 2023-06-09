@@ -19,7 +19,7 @@ CUando tengo que onbtener dependencias, las inyecots, y despues me voy apreocupa
 
 class MotorSugerenciasBasico implements MotorSugerencias {
 
-  public List<Prenda> getPrendasValidas(Usuario usuario){
+  public List<Prenda> getPrendasValidas(Usuario usuario) {
     return usuario.getPrendas();
 
   }

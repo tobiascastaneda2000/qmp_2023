@@ -1,0 +1,143 @@
+ /*
+ class ServicioAccuWeather
+
+   private AccuWeatherAPI accuWeatherAPI
+
+   // Map<String, Object> ?? primitive obsession
+   public Map<String, Object> getCondicionesClimaticas()
+    return accuWeatherAPI.getWeather(CIUDAD).stream()
+        .findFirst()
+        .orElseThrow(() -> new DomainException("No hay temperatura disponible"));
+
+	public esCaluroso(Map<String, Object> condicionClimatica)
+    	condicionesClimaticas.get("temperature") > 30
+*//*
+
+import jdk.internal.access.JavaIOFileDescriptorAccess;
+
+import java.math.BigDecimal;-----------------------
+
+// data class??
+class CondicionClimatica{
+  int temperatura;
+  int viento;
+
+  public CondicionClimatica(int temperatura, int viento, BigDecimal precipitaciones, boolean nevado) {
+    this.temperatura = temperatura;
+    this.nevado = nevado;
+    this.precipitaciones = precipitaciones;
+    this.viento = viento;
+  }
+
+  BigDecimal precipitaciones;
+  boolean nevado;
+
+  public boolean esCaluroso() {
+    return temperatura > 30;
+  }
+/*Proovedor de clima me va a dar la instancia de un servicio de  clima en particular -> SERVICE LOCATOR*/
+/*
+}
+
+class ServicioAccuWeather {
+
+  private AccuWeatherAPI accuWeatherAPI;
+  String ciudad = "Buenos Aires";
+
+  public CondicionClimatica getCondicionesClimaticas() {
+    return accuWeatherAPI.getWeather(ciudad).stream().findFirst().map(result -> new CondicionClimatica(
+        condicionesClimaticas.get("temperature"),
+        condicionesClimaticas.get("wind"),
+        condicionesClimaticas.get("PrecipitationProbability"),
+        condicionesClimaticas.get("snow") == "Yes" //"Yes/No"
+    )).orElseThrow(() -> new DomainException("No hay temperatura disponible"));
+  }
+
+  /*Definicion de negocios: preguntar si filtro de prendas se realizan en todos los motores o que solo es necesario
+  crear un solo motor sugerencia con ese filtro*/
+/*
+  var externo = //new AccuWeatherAPIV2()
+      var
+  servicio =new
+
+  ServicioAccuWeather(...)
+
+  var condicionesClimaticas = servicio.getCondicionesClimaticas()
+
+condicionesClimaticas.getTemperatura()
+    condicionesClimaticas.getViento()
+*/
+
+  /*class ServicioAccuWeather
+
+   private AccuWeatherAPI accuWeatherAPI
+
+   // Map<String, Object> ?? primitive obsession
+   public Map<String, Object> getCondicionesClimaticas()
+    return accuWeatherAPI.getWeather(CIUDAD).stream()
+        .findFirst()
+        .orElseThrow(() -> new DomainException("No hay temperatura disponible"));
+
+	public esCaluroso(Map<String, Object> condicionClimatica)
+    	condicionesClimaticas.get("temperature") > 30
+
+-----------------------
+// data class??
+class CondicionClimatica
+  int temperatura
+  int viento
+  decimal precipitaciones
+  boolean nevado
+
+  public esCaluroso()
+    	temperatura > 30
+
+class ServicioAccuWeather
+
+   private AccuWeatherAPI accuWeatherAPI
+
+   public CondicionClimatica getCondicionesClimaticas()
+    return accuWeatherAPI.getWeather(CIUDAD).stream()
+        .findFirst()
+  			.map(result => new CondicionClimatica(
+        	condicionesClimaticas.get("temperature"),
+          condicionesClimaticas.get("wind"),
+          condicionesClimaticas.get("PrecipitationProbability"),
+          condicionesClimaticas.get("snow") == "Yes" //"Yes/No"
+        )  )
+        .orElseThrow(() -> new DomainException("No hay temperatura disponible"));
+
+class ServicioGoogleWeather
+  public CondicionClimatica getCondicionesClimaticas()
+  	....
+
+  	return new CondicionClimatica(....)
+
+
+
+var externo = //new AccuWeatherAPIV2()
+var servicio = new ServicioAccuWeather(...)
+var condicionesClimaticas = servicio.getCondicionesClimaticas()
+
+condicionesClimaticas.getTemperatura()
+condicionesClimaticas.getViento()
+
+  new MotorDeSugerenciasClimatico(
+		ProveedorDeClima.INSTANCE.getServicioDeClima()
+	)
+
+  ProveedorDeClima.INSTANCE.getServicioDeClima()
+  	// ServicioAccuWeather
+    // ServicioGoogleWeather
+
+
+
+   @Override
+  public List<Prenda> getPrendasValidas(Usuario usuario) {
+    Temperatura temperatura =
+      	ProveedorDeClima.INSTANCE
+      		.getServicioDeClima().getTemperaturaActual();
+    return usuario.getPrendas().stream().filter(prenda -> prenda.esApta(temperatura)).toList();
+  }
+
+}*/
