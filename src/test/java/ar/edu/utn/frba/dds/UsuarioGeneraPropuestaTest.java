@@ -11,7 +11,7 @@ import org.mockito.Mockito;
 
 import static org.mockito.Mockito.mock;
 
-public class UsuarioGeneraPropuesta {
+public class UsuarioGeneraPropuestaTest {
 
   UsuarioGuardarropas unUsuario;
   Guardarropas guardarropas;

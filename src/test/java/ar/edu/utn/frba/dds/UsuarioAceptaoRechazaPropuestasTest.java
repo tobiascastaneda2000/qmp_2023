@@ -15,11 +15,12 @@ import org.mockito.Mockito;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioAceptaPropuesta {
+public class UsuarioAceptaoRechazaPropuestasTest {
 
   UsuarioGuardarropas unUsuario;
   Guardarropas guardarropas;
-  Prenda prendaMock;
+  Prenda prendaOriginalMock;
+  Prenda prendaNuevaMock;
   PropuestaAgregar propuestaAgregar;
   PropuestaQuitar propuestaQuitar;
 
@@ -29,9 +30,11 @@ public class UsuarioAceptaPropuesta {
   void setUp() {
     unUsuario = new UsuarioGuardarropas();
     guardarropas = new Guardarropas();
-    prendaMock = Mockito.mock(Prenda.class);
-    propuestaAgregar = new PropuestaAgregar(guardarropas, prendaMock);
-    propuestaQuitar = new PropuestaQuitar(guardarropas, prendaMock);
+    prendaOriginalMock = Mockito.mock(Prenda.class);
+    prendaNuevaMock = Mockito.mock(Prenda.class);
+    guardarropas.agregarPrenda(prendaOriginalMock);
+    propuestaAgregar = new PropuestaAgregar(guardarropas, prendaNuevaMock);
+    propuestaQuitar = new PropuestaQuitar(guardarropas, prendaOriginalMock);
     List<Propuesta> propuestas = new ArrayList<>();
     propuestas.add(propuestaAgregar);
     propuestas.add(propuestaQuitar);
@@ -46,7 +49,7 @@ public class UsuarioAceptaPropuesta {
   void usuarioAceptaPropuestaDeAgregado() {
     Assertions.assertTrue(unUsuario.getPropuestas().contains(propuestaAgregar));
     unUsuario.aceptarPropuesta(propuestaAgregar);
-    Assertions.assertTrue(unUsuario.getPrendas().contains(prendaMock));
+    Assertions.assertTrue(unUsuario.getPrendas().contains(prendaNuevaMock));
     Assertions.assertFalse(unUsuario.getPropuestas().contains(propuestaAgregar));
     //Mockito.verify(guardarropas, Mockito.times(1)).agregarPrenda(prendaMock);
     //metodo para verificar que guardarPrenda(prendaMock ) se llama una vez
@@ -57,9 +60,8 @@ public class UsuarioAceptaPropuesta {
   @DisplayName("usuario que acepta porpuesta de quitado se elimina la prenda del guardarropas y elimina la propuesta")
   void usuarioAceptaPropuestaDeQuitado() {
     Assertions.assertTrue(unUsuario.getPropuestas().contains(propuestaQuitar));
-    guardarropas.agregarPrenda(prendaMock);
     unUsuario.aceptarPropuesta(propuestaQuitar);
-    Assertions.assertFalse(unUsuario.getPrendas().contains(prendaMock));
+    Assertions.assertFalse(unUsuario.getPrendas().contains(prendaOriginalMock));
     Assertions.assertFalse(unUsuario.getPropuestas().contains(propuestaQuitar));
     //Mockito.verify(guardarropas, Mockito.times(1)).agregarPrenda(prendaMock);
     //metodo para verificar que guardarPrenda(prendaMock ) se llama una vez

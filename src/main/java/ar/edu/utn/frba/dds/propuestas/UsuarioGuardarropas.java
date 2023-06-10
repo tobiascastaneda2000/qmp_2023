@@ -35,6 +35,10 @@ public class UsuarioGuardarropas {
 
   //METODOS
 
+  public void agregarGuardarropa(Guardarropas guardarropa) {
+    guardarropas.add(guardarropa);
+  }
+
   public List<Prenda> getPrendas() {
     return this.guardarropas.stream()
         .flatMap(guardarropas -> guardarropas.getPrendas().stream())
@@ -70,7 +74,5 @@ public class UsuarioGuardarropas {
 
   }
 
-  public void agregarGuardarropa(Guardarropas guardarropa) {
-    guardarropas.add(guardarropa);
-  }
+
 }
