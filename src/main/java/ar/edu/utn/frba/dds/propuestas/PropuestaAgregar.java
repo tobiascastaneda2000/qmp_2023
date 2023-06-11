@@ -10,7 +10,17 @@ public class PropuestaAgregar implements Propuesta{
     this.prenda = prenda;
   }
 
-  public void aplicarPropuesta(){
-    guardarropas.agregarPrenda(prenda);
+
+  public void aceptar(){
+    guardarropas.agregarPrenda(prenda);;
   }
+
+  public void rechazar(){
+    guardarropas.removerPropuesta(this);
+  }
+
+  public void deshacerEn(Guardarropas guardarropas){
+    guardarropas.quitarPrenda(prenda);
+  }
+
 }

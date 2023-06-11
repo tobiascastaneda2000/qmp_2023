@@ -35,51 +35,64 @@ public class UsuarioAceptaoRechazaPropuestasTest {
     guardarropas.agregarPrenda(prendaOriginalMock);
     propuestaAgregar = new PropuestaAgregar(guardarropas, prendaNuevaMock);
     propuestaQuitar = new PropuestaQuitar(guardarropas, prendaOriginalMock);
-    List<Propuesta> propuestas = new ArrayList<>();
-    propuestas.add(propuestaAgregar);
-    propuestas.add(propuestaQuitar);
-    unUsuario.setPropuestas(propuestas);
     unUsuario.agregarGuardarropa(guardarropas);
     //guardarropasMock = mock(Guardarropas.class);
 
   }
 
   @Test
-  @DisplayName("usuario que acepta porpuesta agregado se le suma una prenda al guardarropas y elimina la propuesta")
-  void usuarioAceptaPropuestaDeAgregado() {
-    Assertions.assertTrue(unUsuario.getPropuestas().contains(propuestaAgregar));
-    unUsuario.aceptarPropuesta(propuestaAgregar);
+  @DisplayName("guardarropas recibe propuesta agregado crea propuesta pero aun no suma a la preda")
+  void usuarioRecibePropuestaDeAgregado() {
+    guardarropas.recibirPropuestaAgregar(prendaNuevaMock);
+    Assertions.assertFalse(unUsuario.getPrendas().contains(prendaNuevaMock));
+    Assertions.assertEquals(unUsuario.getPropuestas().size(), 1);
+
+  }
+
+  @Test
+  @DisplayName("guardarropas recibe propuesta quitado crea propuesta pero aun no lo quita")
+  void usuarioRecibePropuestaDeQuitado() {
+    guardarropas.recibirPropuestaQuitar(prendaOriginalMock);
+    Assertions.assertTrue(unUsuario.getPrendas().contains(prendaOriginalMock));
+    Assertions.assertEquals(unUsuario.getPropuestas().size(), 1);
+
+  }
+
+  @Test
+  @DisplayName("usuario que acepta propuesta agregado, suma la prenda")
+  void aceptaPropuestaDeAgregado() {
+    guardarropas.recibirPropuestaAgregar(prendaNuevaMock);
+    guardarropas.getPropuestas().get(0).aceptar();
     Assertions.assertTrue(unUsuario.getPrendas().contains(prendaNuevaMock));
-    Assertions.assertFalse(unUsuario.getPropuestas().contains(propuestaAgregar));
-    //Mockito.verify(guardarropas, Mockito.times(1)).agregarPrenda(prendaMock);
-    //metodo para verificar que guardarPrenda(prendaMock ) se llama una vez
-
   }
 
   @Test
-  @DisplayName("usuario que acepta porpuesta de quitado se elimina la prenda del guardarropas y elimina la propuesta")
-  void usuarioAceptaPropuestaDeQuitado() {
-    Assertions.assertTrue(unUsuario.getPropuestas().contains(propuestaQuitar));
-    unUsuario.aceptarPropuesta(propuestaQuitar);
+  @DisplayName("usuario que rechaza propuesta de agregado, elimina la propuesta sin mas")
+  void rechazaPropuestaDeAgregado() {
+    guardarropas.recibirPropuestaAgregar(prendaNuevaMock);
+    guardarropas.getPropuestas().get(0).rechazar();
+    Assertions.assertFalse(unUsuario.getPrendas().contains(prendaNuevaMock));
+    Assertions.assertEquals(unUsuario.getPropuestas().size(),0);
+  }
+
+  @Test
+  @DisplayName("usuario que acepta propuesta de quitado, elimina la prenda")
+  void aceptaPropuestaDeQuitado() {
+    guardarropas.recibirPropuestaQuitar(prendaOriginalMock);
+    guardarropas.getPropuestas().get(0).aceptar();
     Assertions.assertFalse(unUsuario.getPrendas().contains(prendaOriginalMock));
-    Assertions.assertFalse(unUsuario.getPropuestas().contains(propuestaQuitar));
-    //Mockito.verify(guardarropas, Mockito.times(1)).agregarPrenda(prendaMock);
-    //metodo para verificar que guardarPrenda(prendaMock ) se llama una vez
-
   }
+
 
   @Test
-  @DisplayName("usuario que rechaza propuesta agregado elimina la propuesta sin mas")
-  void usuarioRechazaPropuestaDeAgregado() {
-    unUsuario.rechazarPropuesta(propuestaAgregar);
-    Assertions.assertFalse(unUsuario.getPropuestas().contains(propuestaAgregar));
+  @DisplayName("usuario que rechaza propuesta de quitado, elimina la propuesta sin mas")
+  void rechazaPropuestaDeQuitado() {
+    guardarropas.recibirPropuestaQuitar(prendaOriginalMock);
+    guardarropas.getPropuestas().get(0).rechazar();
+    Assertions.assertTrue(unUsuario.getPrendas().contains(prendaOriginalMock));
+    Assertions.assertEquals(unUsuario.getPropuestas().size(),0);
   }
 
-  @Test
-  @DisplayName("usuario que rechaza propuesta de quitar elimina la propuesta sin mas")
-  void usuarioRechazaPropuestaDeQuitado() {
-    unUsuario.rechazarPropuesta(propuestaQuitar);
-    Assertions.assertFalse(unUsuario.getPropuestas().contains(propuestaQuitar));
-  }
+  //Faltan test de deshacer
 
 }

@@ -11,7 +11,7 @@ import org.mockito.Mockito;
 
 import static org.mockito.Mockito.mock;
 
-public class UsuarioGeneraPropuestaTest {
+public class GuardarropasGeneraPropuestaTest {
 
   UsuarioGuardarropas unUsuario;
   Guardarropas guardarropas;
@@ -23,19 +23,23 @@ public class UsuarioGeneraPropuestaTest {
     guardarropas = Mockito.mock(Guardarropas.class);
     prendaMock = Mockito.mock(Prenda.class);
 
+    unUsuario.agregarGuardarropa(guardarropas);
+
   }
 
   @Test
   @DisplayName("usuario recibe propuesta de agregado")
-  void usuarioAgregaPropuesta(){
-    unUsuario.recibirPropuestaAgregar(guardarropas, prendaMock);
+  void crearPropuestaDeAgregado(){
+    guardarropas.recibirPropuestaAgregar(prendaMock);
+    Assertions.assertEquals(guardarropas.getPropuestas().size(), 1);
     Assertions.assertEquals(unUsuario.getPropuestas().size(), 1);
   }
 
   @Test
   @DisplayName("usuario recibe propuesta de agregado")
-  void usuarioQuitaPropuesta(){
-    unUsuario.recibirPropuestaQuitar(guardarropas, prendaMock);
+  void crearPropuestaDeQuitado(){
+    guardarropas.recibirPropuestaQuitar( prendaMock);
     Assertions.assertEquals(unUsuario.getPropuestas().size(),1);
+    Assertions.assertEquals(unUsuario.getPropuestas().size(), 1);
   }
 }

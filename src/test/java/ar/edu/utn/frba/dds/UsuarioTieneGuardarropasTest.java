@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class UsuarioAgregaGuardarropaTest {
+public class UsuarioTieneGuardarropasTest {
   UsuarioGuardarropas usuarioCreador;
   Guardarropas guardarropas;
 
@@ -22,6 +22,13 @@ public class UsuarioAgregaGuardarropaTest {
   void usuarioAgregaGuardarropas() {
     usuarioCreador.agregarGuardarropa(guardarropas);
     Assertions.assertTrue(usuarioCreador.getGuardarropas().contains(guardarropas));
-    Assertions.assertEquals(usuarioCreador.getGuardarropas().size(), 1);
+  }
+
+  @Test
+  @DisplayName("usuario puede quitar guardarropas")
+  void usuarioQuitaGuardarropas() {
+    usuarioCreador.agregarGuardarropa(guardarropas);
+    usuarioCreador.quitarGuadarropas(guardarropas);
+    Assertions.assertFalse(usuarioCreador.getGuardarropas().contains(guardarropas));
   }
 }

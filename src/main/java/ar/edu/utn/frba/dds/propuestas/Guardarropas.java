@@ -8,17 +8,27 @@ import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Guardarropas {
 
   List<Prenda> prendas;
 
+
+
+  List<Propuesta> propuestas;
+
+
   public Guardarropas() {
     this.prendas = new ArrayList<>();
+    this.propuestas = new ArrayList<>();;
   }
 
   public List<Prenda> getPrendas() {
     return this.prendas;
+  }
+  public List<Propuesta> getPropuestas() {
+    return propuestas;
   }
 /*
   public List<Atuendo> todasLasPosiblesCombinaciones() {
@@ -55,46 +65,23 @@ public class Guardarropas {
   public void quitarPrenda(Prenda prenda){
     prendas.remove(prenda);
   }
-
-  public void validarPrendaParaAgregar(Prenda prenda) {
-    if(getPrendas().contains(prenda)){
-      throw new PrendaYaExisteEnGuardaropasException("Prenda ya existe dentro del guardarropas correspondiente");
-    }
+  public void recibirPropuestaAgregar( Prenda prenda) {
+    propuestas.add(new PropuestaAgregar(this, prenda));
   }
 
-  public void validarPrendaParaQuitar(Prenda prenda) {
-    if(!getPrendas().contains(prenda)){
-      throw new PrendaNoExisteEnGuardaropasException("Prenda NO existe dentro del guardarropas correspondiente");
-    }
+  public void recibirPropuestaQuitar( Prenda prenda) {
+    propuestas.add(new PropuestaQuitar(this, prenda));
   }
 
-
-
-
+  public void removerPropuesta(Propuesta propuestaQuitar) {
+    propuestas.remove(propuestaQuitar);
+  }
 /*
-  public void agregarPrenda(Prenda prenda) {
-    switch (prenda.categoria()) {
-      case PARTE_SUPERIOR -> {
-        prendasSuperiores.add(prenda);
-      }
-      case PARTE_INFERIOR -> prendasInferiores.add(prenda);
-      case CALZADO -> calzados.add(prenda);
-      default -> throw new RuntimeException("Categoria no pertenece a los campos del guardarropas");
-
-    }
-  }
-
-  public void quitarPrenda(Prenda prenda) {
-    switch (prenda.categoria()) {
-      case PARTE_SUPERIOR -> {
-        prendasSuperiores.remove(prenda);
-      }
-      case PARTE_INFERIOR -> prendasInferiores.remove(prenda);
-      case CALZADO -> calzados.remove(prenda);
-      default -> throw new RuntimeException("Categoria no pertenece a los campos del guardarropas");
-
-    }
+  public List<Prenda> prendasPropuestas(){
+    this.propuestas.stream().flatMap(p->p.getPrenda().stream());
   }*/
+
+
 }
 
 

@@ -2,6 +2,8 @@ package ar.edu.utn.frba.dds.propuestas;
 
 import ar.edu.utn.frba.dds.prenda.Prenda;
 
+import java.util.Arrays;
+
 public class PropuestaQuitar implements Propuesta{
 
 
@@ -14,7 +16,17 @@ public class PropuestaQuitar implements Propuesta{
   }
 
 
-  public void aplicarPropuesta(){
-    guardarropas.quitarPrenda(prenda);
+  public void aceptar(){
+    guardarropas.quitarPrenda(prenda);;
   }
+
+  public void rechazar(){
+    guardarropas.removerPropuesta(this);
+  }
+
+  public void deshacerEn(Guardarropas guardarropas){
+    guardarropas.agregarPrenda(prenda);
+  }
+
+
 }
