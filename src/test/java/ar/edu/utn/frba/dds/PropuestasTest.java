@@ -20,15 +20,12 @@ public class PropuestasTest {
   Prenda prendaNuevaMock;
   PropuestaAgregar propuestaAgregar;
   PropuestaQuitar propuestaQuitar;
-
-  Guardarropas guardarropasMock;
   ProveedorDeMotor proveedorDeMotorMock;
-
 
 
   @BeforeEach
   void setUp() {
-    proveedorDeMotorMock = Mockito.mock(ProveedorDeMotor .class);
+    proveedorDeMotorMock = Mockito.mock(ProveedorDeMotor.class);
     unUsuario = new Usuario(12, proveedorDeMotorMock);
     guardarropas = new Guardarropas();
     prendaOriginalMock = Mockito.mock(Prenda.class);
@@ -72,7 +69,7 @@ public class PropuestasTest {
     guardarropas.recibirPropuestaAgregar(prendaNuevaMock);
     guardarropas.getPropuestas().get(0).rechazar();
     Assertions.assertFalse(unUsuario.getPrendas().contains(prendaNuevaMock));
-    Assertions.assertEquals(unUsuario.getPropuestas().size(),0);
+    Assertions.assertEquals(unUsuario.getPropuestas().size(), 0);
   }
 
   @Test
@@ -90,9 +87,26 @@ public class PropuestasTest {
     guardarropas.recibirPropuestaQuitar(prendaOriginalMock);
     guardarropas.getPropuestas().get(0).rechazar();
     Assertions.assertTrue(unUsuario.getPrendas().contains(prendaOriginalMock));
-    Assertions.assertEquals(unUsuario.getPropuestas().size(),0);
+    Assertions.assertEquals(unUsuario.getPropuestas().size(), 0);
   }
 
-  //Faltan test de deshacer
+  @Test
+  @DisplayName("Se deshace cambio de propuesta de agregado, quita la prenda ingresada")
+  void deshacerCambiosDePropuestaDeAgregado() {
+    guardarropas.recibirPropuestaAgregar(prendaNuevaMock);
+    guardarropas.getPropuestas().get(0).aceptar();
+    guardarropas.getPropuestas().get(0).deshacerEn(guardarropas);
+    Assertions.assertFalse(unUsuario.getPrendas().contains(prendaNuevaMock));
+  }
+
+
+  @Test
+  @DisplayName("Se deshace cambio de propuesta de quitar, devuelve la prenda eliminada")
+  void deshacerCambiosDePropuestaDeQuitar() {
+    guardarropas.recibirPropuestaQuitar(prendaOriginalMock);
+    guardarropas.getPropuestas().get(0).aceptar();
+    guardarropas.getPropuestas().get(0).deshacerEn(guardarropas);
+    Assertions.assertTrue(unUsuario.getPrendas().contains(prendaOriginalMock));
+  }
 
 }
